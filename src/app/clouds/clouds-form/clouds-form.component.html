@@ -1,0 +1,71 @@
+ <div class="col-xs-12 rounded shadow-3 bg" style="padding-top: 20px;">
+  <form id="cloud-form" novalidate [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+    <h2>{{cloud.id ? 'Editar instância' : 'Nova instância'}}</h2>
+
+    <label for="name">Nome:</label> 
+    <input type="text" class="form-control" placeholder="Insira o nome"
+        formControlName="name" id="name" [ngClass]="aplicaCssErro('name')"
+        [(ngModel)]="cloud.name">
+    
+    <app-campo-control-erro [mostrarErro]="isCampoInvalid('name')" msgErro="Insira o nome.">
+    </app-campo-control-erro>
+
+    <label for="operationalSystem">Sistema operacional:</label> 
+    <input type="text" class="form-control" placeholder="Insira o sistema operacional"
+        formControlName="operationalSystem" id="operationalSystem" [ngClass]="aplicaCssErro('operationalSystem')"
+        [(ngModel)]="cloud.operationalSystem">
+    
+    <app-campo-control-erro [mostrarErro]="isCampoInvalid('operationalSystem')" msgErro="Insira o sistema operacional.">
+    </app-campo-control-erro>
+
+    <label for="capacity">Capacidade (GB):</label> 
+    <input type="text" class="form-control" placeholder="Insira a capacidade"
+        formControlName="capacity" id="capacity" [ngClass]="aplicaCssErro('capacity')"
+        [(ngModel)]="cloud.capacity"
+        appOnlyNumber
+        maxlength="4"
+        >
+
+    <app-campo-control-erro [mostrarErro]="isCampoInvalid('capacity')" msgErro="Insira a capacidade.">
+    </app-campo-control-erro>
+
+    <label>Status:</label> 
+    <div>
+        <label class="radio-inline" style="padding-top: 0px"><input type="radio" formControlName="active" [checked]="cloud.active" [value]="true" [(ngModel)]="cloud.active">Ativa</label>
+        <label class="radio-inline" style="padding-top: 0px"><input type="radio" formControlName="active" [checked]="!cloud.active" [value]="false" [(ngModel)]="cloud.active">Inativa</label>  
+    </div>
+
+    <div *ngIf="cloud.id">
+        <label>Criada em:</label> 
+        <input type="text"
+            id="createDate"
+            class="form-control"
+            style="width: 20%"
+            formControlName="createDate"
+            [ngModel]="cloud.createDate | date: 'dd/MM/yyyy HH:mm:ss'"
+        >
+
+        <label>Última atualização:</label> 
+        <input type="text"
+            id="updateDate"
+            class="form-control"
+            style="width: 20%"
+            formControlName="updateDate"
+            [ngModel]="cloud.updateDate | date: 'dd/MM/yyyy HH:mm:ss'"
+        >
+    </div>
+
+    <app-status-message [message]="message" [success]="success"></app-status-message>
+
+    <div class = "col-xs-12 text-right no-padding">
+        <button type="button" class="btn btn-danger btn-space" (click)="cancel()">
+            <i class="fa fa-times-circle" aria-hidden="true"></i>
+            Cancelar
+        </button>
+        <button id="salvar" type="submit" class="btn btn-primary">
+            <i class="fa fa-plus-circle" aria-hidden="true"></i>
+            Salvar
+        </button>
+    </div>
+  </form>
+</div>

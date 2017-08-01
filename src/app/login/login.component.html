@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-xs-12 no-padding form">
+        <form novalidate [formGroup]="form" (ngSubmit)="onSubmit()">
+            <label for="username">Username:</label> 
+            <input type="text" class="form-control" placeholder="Insira o username"
+                formControlName="username" id="username" [ngClass]="aplicaCssErro('username')"
+                [(ngModel)]="login.username">
+
+            <app-campo-control-erro [mostrarErro]="isCampoInvalid('username')" msgErro="Insira o username.">
+            </app-campo-control-erro>
+            
+            <label for="password">Senha:</label> 
+            <input type="password" class="form-control" placeholder="Insira a senha"
+                formControlName="password" id="password" [ngClass]="aplicaCssErro('password')"
+                [(ngModel)]="login.password">
+
+            <app-campo-control-erro [mostrarErro]="isCampoInvalid('password')" msgErro="Insira a senha.">
+            </app-campo-control-erro>
+            
+            <app-status-message [message]="errorMessage" [success]="success"></app-status-message>
+            
+            <button id="cadastrar" type="button" class="btn btn-primary pull-right"
+             (click)="newPerson()" *ngIf="!isTokenValid">
+                <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                Cadastrar
+            </button>
+             <button type="submit" id="login" class="pull-right btn-space btn" [ngClass]="{'btn-primary' : !isTokenValid, 'btn-danger' : isTokenValid}" > 
+                <i [class]="isTokenValid ? 'fa fa-sign-out' : 'fa fa-sign-in'"></i>
+                {{!isTokenValid ? "Login" : "Logoff"}}
+            </button>
+        </form>
+    </div>
+</div>

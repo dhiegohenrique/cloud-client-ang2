@@ -1,0 +1,23 @@
+<div class="col-xs-12 rounded shadow-3 bg" style="padding-top: 20px;">
+    <button id="nova" class="btn btn-primary pull-right" type="button" style="margin-top: 0px" [routerLink]="['new']">
+        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+        Nova
+    </button> 
+
+    <br/><br/>
+    
+    <div class="list-group">
+        <a href="" class="list-group-item clearfix" *ngFor="let cloud of clouds" style="display: table; width: 100%" [routerLink]="[cloud.id]"> 
+            {{cloud.name}}
+            <span class="">
+                <button class="btn btn-xs btn-danger" id="delete" title="Excluir" style="width: 22px; float: right" (click)="delete(cloud.id, $event)">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+            </span>
+        </a>
+    </div>
+
+    <div class="alert alert-info" *ngIf="clouds.length == 0">
+        <span>Nenhuma instância adicionada.</span>
+    </div>
+</div>
