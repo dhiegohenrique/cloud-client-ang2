@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+- 7.4.0
+notifications:
+  email: false
+before_deploy:
+- npm run build
+- cd dist
+deploy:
+  provider: heroku
+  api_key:
+    secure: TYCCCF/e+FC+MBNd4wSWXdygFIB6opZdYwMTdpfAKZlrIAQDGJb8wOzAbT+f4RkjzHggnpTX+oK3rFtYlQlCFW7Aw+VN52pUE/tFh5MLyWcLyiTSfYAbBBKjWqGaYxek07xdfMiw0hVej0yrNYzexAh0wuOBAk4hjSR7HlZpsiJARszEGYWyicaNV6LBrLS3ZIgptALLarFxk2dXw8RyHCgqBa0uOd3US9royo9sZp3PuHENrsnzckga9ezcw28CtrRkCiY1dpdbGc1RNa++GKvRcs1Dr2Jaag04aTViyAyjMtqu/oluiFL8UJshafqzZkPJ0DCbfR/Mz/VT7ByfPd3u2QNZKUOptIQnoxrKFFLGpJM0f3ZgHHW3s+19X4CQuDG+DtgEe644guEWZl2PayvfNkyV/6ZLi/mvWkj3x0pdH7xgpWh82oOIPVm+ZpfAGjo2d4vBzOQvtANfsqfcy7NthfFyx9ExIkmId3xDkKbibOWCDxn5GfFIK17pbf8EKqBt7r9p1l6oRybGwNcHPQnq4gNxoLeSKnttObgFuLZX1SrnZm72OonWiSUoIhVYSu8UehwiddMW748lVjvGwgd3p/Ig9MZbQXwjSJmvsA4Mi1WFfik69TjMEE4Mev+rykMA/FktgEH+NJtim57b1Cs6w4y5WMNKxHC43ZjpfOs=
+  app: cloud-client-ang2
+  on:
+    repo: dhiegohenrique/cloud-client-ang2
+  skip_cleanup: true

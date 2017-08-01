@@ -1,28 +1,23 @@
-# CloudCliAng
+[![Build Status](https://travis-ci.org/dhiegohenrique/cloud-client-ang2.svg?branch=master)](https://travis-ci.org/dhiegohenrique/cloud-client-ang2)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.1.
+Requisitos:
+1) NPM 4.0.5 ou superior (https://www.npmjs.com/get-npm);
+2) angular-cli (https://github.com/angular/angular-cli);
+3) O backend deve estar rodando (https://github.com/dhiegohenrique/cloud-api);
 
-## Development server
+Para rodar, na pasta raíz, executar:
+1) npm install;
+2) ng serve;
+3) a aplicação estará rodando em: http://localhost:4200
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Para rodar os testes via [Karma](https://karma-runner.github.io):
+1) npm test;
 
-## Code scaffolding
+Para rodar os testes end-to-end via [Protractor](http://www.protractortest.org/):
+1) O backend deve estar rodando (https://github.com/dhiegohenrique/cloud-api);
+2) npm run e2e;
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
+Para gerar a versão de distribuição:
+1) npm run build;
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+A cada commit, serão realizados testes unitários no Travis. Se passarem, o deploy será realizado em https://cloud-client-ang2.herokuapp.com/
